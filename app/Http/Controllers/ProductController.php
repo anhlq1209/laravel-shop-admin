@@ -36,12 +36,11 @@ class ProductController extends Controller
     }
 
     public function store(ProductFormRequest $request) {
-
         if ($this->productService->create($request)) {
             return redirect()->back();
         }
             
-        Session::flash('error', 'Vui lòng nhập đủ thông tin Product');
+        // Session::flash('error', 'Vui lòng nhập đủ thông tin Product');
         return redirect()->back()->withInput();
         
     }
@@ -83,7 +82,14 @@ class ProductController extends Controller
         return false;
     }
 
-    public function test(Request $request) {
+    public function test() {
+        
+        return view('test');
+
+    }
+
+    public function testStore(Request $request) {
+
         if ($request->isMethod('post')) {
 
             $image = $request->file('img');
@@ -92,6 +98,6 @@ class ProductController extends Controller
             exit();
 
         }
-        return view('test');
+        
     }
 }

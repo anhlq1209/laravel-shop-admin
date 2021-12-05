@@ -60,7 +60,7 @@
 }
 
 /* Input file custom */
-.file-upload .file-upload-select {
+.avatar-upload .avatar-upload-select {
     display: block;
     color: #dbdbdb;
     cursor: pointer;
@@ -70,16 +70,16 @@
     position: relative;
     border-radius: 6px;
 }
-.file-upload .file-upload-select .file-select-button {
+.avatar-upload .avatar-upload-select .avatar-select-button {
     background: #161f27;
     padding: 10px;
     display: inline-block;
 }
-.file-upload .file-upload-select .file-select-name {
+.avatar-upload .avatar-upload-select .avatar-select-name {
     display: inline-block;
     padding: 10px;
 }
-.file-upload .file-upload-select:hover .file-select-button {
+.avatar-upload .avatar-upload-select:hover .avatar-select-button {
     background: #324759;
     color: #ffffff;
     transition: all 0.2s ease-in-out;
@@ -87,6 +87,77 @@
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
 }
-.file-upload .file-upload-select input[type="file"] {
+.avatar-upload .avatar-upload-select input[type="file"] {
+    display: none;
+}
+
+
+
+.image-upload-mul {
+    display: block;
+    color: #dbdbdb;
+    cursor: pointer;
+    text-align: left;
+    background: #1a242f;
+    overflow: hidden;
+    position: relative;
+    border-radius: 6px;
+}
+.image-upload-mul .image-upload-select .image-select-button {
+    background: #161f27;
+    padding: 10px;
+    display: inline-block;
+}
+.image-upload-mul .image-upload-select .image-select-name {
+    display: inline-block;
+    width: auto;
+    padding: 10px;
+}
+.image-upload-mul .image-upload-select:hover .image-select-button {
+    background: #324759;
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+.image-upload-mul .image-upload-select input[type="file"] {
+    display: none;
+}
+.image-upload-mul .image-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+.image-upload-mul .image-remove:hover {
+    background: #324759;
+    color: #ffffff;
+}
+
+.avatar {
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+}
+
+.img-avatar {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #1a242f;
+}
+
+#avatar-show {
+    width: 150px;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    border: 1px solid #1a242f;
+    margin: 0 auto;
+}
+
+/* TEST */
+input[type="file"].input-image {
     display: none;
 }

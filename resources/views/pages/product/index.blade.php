@@ -2,6 +2,7 @@
 
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <link rel="stylesheet" href="/template/css/my-style.css">
 @endsection
 
 @section('footer')
@@ -28,16 +29,19 @@
                 <table class="table table-striped projects">
                     <thead>
                         <tr>
-                            <th style="width: 2%">
+                            <th style="width: 2%" class="text-center">
                                 #
                             </th>
-                            <th style="width: 48%">
+                            <th style="width: 38%" class="text-center">
                                 Product name
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 10%" class="text-center">
+                                Avatar
+                            </th>
+                            <th style="width: 10%" class="text-center">
                                 Category
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 10%" class="text-center">
                                 Price
                             </th>
                             <th style="width: 10%" class="text-center">
@@ -57,6 +61,10 @@
                                     <a>{{ $product['name'] }}</a>
                                 </td>
                                 <td>
+                                    <div class="avatar" style="background-image: url({{ $product['avatar'] }})"></div>
+                                    {{-- <img src="{{ $product['avatar'] }}" /> --}}
+                                </td>
+                                <td class="project-state">
                                     {{ $product['category_id'] }}
                                 </td>
                                 <td class="project_progress">
