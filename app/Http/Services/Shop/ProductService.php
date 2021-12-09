@@ -71,4 +71,76 @@ class ProductService {
         return true;
     }
 
+    public function update($id, $request) {
+
+        dd($request);
+        exit();
+
+        try {
+
+            $productUpdate = Product::where('id', $id);
+    
+            $productUpdate->name = $request->input('name');
+            $productUpdate->description = $request->input('description');
+            $productUpdate->category_id = $request->input('category_id');
+            $productUpdate->price = $request->input('price');
+
+            if ($request->file('avatarEdit') !== null) {
+                
+                $avatar = $request->file('avatarEdit');
+                $fileNameAvatar = $avatar->getClientOriginalName();
+                $fileNameImg = $productUpdate->id.substr($fileNameAvatar, strpos($fileNameAvatar, '.', strlen($fileNameAvatar) - 5), strlen($fileNameAvatar));
+                
+                $avatar->storeAs('assets\imgProduct', $fileNameImg, 'local');
+                
+                $storedPath = $avatar->move('assets\imgProduct', $fileNameImg, $avatar->getClientOriginalName());
+
+                $path = $storedPath->getPathName();
+                $path = '/'.str_ireplace('\\','/',$path);
+
+
+                $productUpdate->avatar = $path;
+            }
+
+            if ($request->file('images') !== null) {
+
+                $images = $request->file('images');
+
+                foreach ($images as $image) {
+
+                    ProductImage::create([
+                        'product_id' => $productUpdate->id
+                    ]);
+
+                    $imgLatest = ProductImage::latest()->first();
+
+                    $fileNameImg = $image->getClientOriginalName();
+                    $fileNameImg = $imgLatest->id.substr($fileNameImg, strpos($fileNameImg, '.', strlen($fileNameImg) - 5), strlen($fileNameImg));
+                    
+                    $image->storeAs('assets\imgProduct', $fileNameImg, 'local');
+                    
+                    $storedPath = $image->move('assets\imgProduct', $fileNameImg, $image->getClientOriginalName());
+
+                    $path = $storedPath->getPathName();
+                    $path = '/'.str_ireplace('\\','/',$path);
+
+                    $imgLatest->image = $path;
+                    $imgLatest->save();
+                    
+                }
+
+            }
+
+            Session::flash('success', 'Cập nhật thông tin Product thành công');
+            return redirect()->back();
+        
+        } catch (\Exception $e) {
+
+            Session::flash('error', $e->getMessage());
+            return false;
+
+        }
+
+    }
+
 }

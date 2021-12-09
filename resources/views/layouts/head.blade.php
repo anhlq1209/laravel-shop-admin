@@ -22,5 +22,9 @@
 <link rel="stylesheet" href="/template/plugins/daterangepicker/daterangepicker.css">
 <!-- summernote -->
 <link rel="stylesheet" href="/template/plugins/summernote/summernote-bs4.min.css">
+<!-- jQuery -->
+<script src="/template/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="/template/plugins/jquery-ui/jquery-ui.min.js"></script>
 
 @yield('head')

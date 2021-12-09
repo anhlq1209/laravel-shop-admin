@@ -43,7 +43,15 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/categories" class="nav-link {{ $title === 'Categories' ? 'active' : '' }}">
+					<a href="/users" class="nav-link {{ $title === 'Users' ? 'active' : '' }}">
+						<i class="nav-icon fas fa-users"></i>
+						<p>
+							Users
+						</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/categories" class="nav-link {{ $title === 'Categories' || $title ==='New category' || $title === 'Edit category' ? 'active' : '' }}">
 						<i class="nav-icon fas fa-boxes"></i>
 						<p>
 							Categories
@@ -51,7 +59,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/products" class="nav-link {{ $title === 'Products' ? 'active' : '' }}">
+					<a href="/products" class="nav-link {{ $title === 'Products' || $title ==='New product' || $title === 'Edit product' ? 'active' : '' }}">
 						<i class="nav-icon fab fa-battle-net"></i>
 						<p>
 							Products

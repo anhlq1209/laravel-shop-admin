@@ -1,4 +1,4 @@
-$(async function () {
+$(function () {
     $('.btn-del-cate').click(function (e) {
         let idDel = $(this).val();
 
@@ -86,10 +86,37 @@ $(async function () {
     
             })
             
+            $('.img').on('click', function () {
+                $(this).remove()
+            })
+            
         })
-        
-        $('.img').on('click', function () {
-            $(this).remove()
+
+    }
+
+    removeImage();
+
+    function removeImage() {
+
+        $('.imageAdded .added').on('click', function () {
+    
+            let id = $(this).attr('rel');
+    
+            if (confirm('Bạn có chắc muốn xóa ảnh ' + id + ' không?')) {
+                
+                    $(this).remove();
+
+                    $.post('/product/deleteImage/' + id,
+                        {
+                            '_token':$('meta[name="csrf-token"]').attr('content')
+                        },
+                        function (data) {
+
+                        }
+                    )
+    
+            }
+    
         })
 
     }

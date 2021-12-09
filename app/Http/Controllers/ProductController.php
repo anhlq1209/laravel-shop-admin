@@ -6,6 +6,7 @@ use App\Http\Requests\ProductFormRequest;
 use App\Http\Services\Shop\ProductService;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -30,7 +31,7 @@ class ProductController extends Controller
     public function create() {
         $categories = Category::all();
         return view('pages.product.create', [
-            'title' => 'New Category',
+            'title' => 'New product',
             'categories' => $categories
         ]);
     }
@@ -40,7 +41,7 @@ class ProductController extends Controller
             return redirect()->back();
         }
             
-        // Session::flash('error', 'Vui lòng nhập đủ thông tin Product');
+        Session::flash('error', 'Vui lòng nhập đủ thông tin Product');
         return redirect()->back()->withInput();
         
     }
@@ -48,22 +49,19 @@ class ProductController extends Controller
     public function edit($id) {
         $product = Product::find($id);
         $categories = Category::all();
+        $images = ProductImage::where('product_id', $id)->get();
 
         return view('pages.product.edit', [
             'title' => 'Edit product',
             'product' => $product,
-            'categories' => $categories
+            'categories' => $categories,
+            'images' => $images
         ]);
     }
 
     public function update($id, Request $request) {
 
-        if (Product::where('id', $id)->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'category_id' => $request->input('category_id'),
-            'price' => $request->input('price')
-            ])) {
+        if ($this->productService->update($id, $request)) {
             Session::flash('success', 'Cập nhật thông tin Product thành công');
             return redirect()->back();
         }
@@ -82,6 +80,11 @@ class ProductController extends Controller
         return false;
     }
 
+    public function deleteImage($id) {
+        ProductImage::find($id)->delete();
+    }
+
+    //  TEST
     public function test() {
         
         return view('test');
