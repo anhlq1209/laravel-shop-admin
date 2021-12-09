@@ -32,7 +32,7 @@
                                 #
                             </th>
                             <th style="width: 20%">
-                                Project Name
+                                Category name
                             </th>
                             
                             <th style="width: 20%">
