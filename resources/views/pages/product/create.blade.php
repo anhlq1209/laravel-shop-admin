@@ -19,7 +19,7 @@
         <form action="/product/store" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Product</h3>
@@ -33,14 +33,6 @@
                                 <label for="description">Product description</label>
                                 <textarea id="description" name="description" class="form-control"></textarea>
                             </div>
-                            <div class="form-group file-upload">
-                                <label for="avatar">Avatar product</label>
-                                <div class="file-upload-select">
-                                    <div class="file-select-button">Choose File</div>
-                                    <div class="file-select-name">No file chosen...</div> 
-                                    <input type="file" name="avatar" id="avatar" accept="image/*">
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label for="category_id">Category</label>
                                 <select id="category_id" name="category_id" class="form-control custom-select">
@@ -53,6 +45,39 @@
                             <div class="form-group">
                                 <label for="price">Price</label>
                                 <input type="number" id="price" name="price" class="form-control">
+                            </div>
+                        </div>
+                    <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Image of product</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="avatar">Avatar for product</label>
+                                <div class="form-group avatar-show">
+                                    <div id="avatar-show"></div>
+                                </div>
+                                <div class="form-group avatar-upload">
+                                    <div class="avatar-upload-select">
+                                        <div class="avatar-select-button">Choose File</div>
+                                        <div class="avatar-select-name">No file chosen...</div> 
+                                        <input type="file" name="avatar" id="avatar" class="input-avatar" accept="image/*">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Add image for product</label>
+                                <div class="images">
+                                    <div class="pic">
+                                        add
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     <!-- /.card-body -->

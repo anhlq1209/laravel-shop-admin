@@ -27,17 +27,19 @@ class ProductFormRequest extends FormRequest
             'name' => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'avatar' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'Vui lòng điền tên sản phẩm',
-            'description.required' => 'Vui lòng điền mô tả sản phẩm',
-            'category_id.required' => 'Vui lòng chọn danh mục',
-            'price.required' => 'Vui lòng điền giá sản phẩm',
+            'name.required' => 'Vui lòng điền tên sản phẩm!!!',
+            'description.required' => 'Vui lòng điền mô tả sản phẩm!!!',
+            'category_id.required' => 'Vui lòng chọn danh mục!!!',
+            'price.required' => 'Vui lòng điền giá sản phẩm!!!',
+            'price.required' => 'Ảnh đại diện sản phẩm không được để trống!!!'
         ];
     }
 }
