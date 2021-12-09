@@ -52,13 +52,12 @@
                     <!-- /.card -->
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-secondary">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Image of product</h3>
+                            <h3 class="card-title">Avatar of product</h3>
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="avatar">Avatar for product</label>
                                 <div class="form-group avatar-show">
                                     <div id="avatar-show"></div>
                                 </div>
@@ -70,9 +69,16 @@
                                     </div>
                                 </div>
                             </div>
-
+                        </div>
+                    <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Image of product</h3>
+                        </div>
+                        <div class="card-body">
                             <div class="form-group">
-                                <label>Add image for product</label>
                                 <div class="images">
                                     <div class="pic">
                                         add
@@ -80,9 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                    <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
                 </div>
             </div>
             <div class="row">

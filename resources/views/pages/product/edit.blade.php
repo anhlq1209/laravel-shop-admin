@@ -16,7 +16,7 @@
 @section('content')
     <!-- Main content -->
     <section class="content">
-        <form action="/product/update/{{ $product['id'] }}" method="post">
+        <form action="/product/update/{{ $product['id'] }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -56,56 +56,57 @@
                     <!-- /.card -->
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-secondary">
+                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Avatar</h3>
+                            <h3 class="card-title">Avatar of product</h3>
                         </div>
                         <div class="card-body">
-                            <div class="form-group avatar--full">
-                                <img class="img-avatar" src="{{ $product['avatar'] }}" alt="">
-                            </div>
-                            <div class="form-group avatar-upload">
-                                <label for="avatar">Change avatar</label>
-                                <div class="avatar-upload-select">
-                                    <div class="avatar-select-button">Choose File</div>
-                                    <div class="avatar-select-name">No file chosen...</div> 
-                                    <input type="file" name="avatar" class="input-avatar" accept="image/*">
-                                </div>
-                            </div>
-                        </div>
-                      <!-- /.card-body -->
-                    </div>
-                    <div class="card card-secondary">
-                        <div class="card-header">
-                            <h3 class="card-title">Add images</h3>
-            
-                            <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="group-images">
-                                <label for="avatar">Change avatar</label>
-                                <div class="form-group image-upload-mul">
-                                    <div class="image-upload-select">
-                                        <div class="image-select-button">Choose File</div>
-                                        <div class="image-select-name">No file chosen...</div> 
-                                        <input type="file" name="images[]" class="input-image" accept="image/*">
-                                    </div>
-                                    <div class="image-remove">
-                                        <i class="fas fa-times"></i>
-                                    </div> 
-                                </div>
-                            </div>
                             <div class="form-group">
-                                <div id="add-file-image" class="btn btn-secondary">Add</div>
+                                <div class="form-group avatar-show">
+                                    <div id="avatar-show" style="background-image: url({{ $product['avatar'] }})"></div>
+                                </div>
+                                <div class="form-group avatar-upload">
+                                    <div class="avatar-upload-select">
+                                        <div class="avatar-select-button">Choose File</div>
+                                        <div class="avatar-select-name">No file chosen...</div> 
+                                        <input type="file" name="avatarEdit" id="avatarEdit" class="input-avatar" accept="image/*">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                      <!-- /.card-body -->
+                    <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+                    <div class="card card-secondary">
+                        <div class="card-header">
+                            <h3 class="card-title">Image added</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="imageAdded">
+                                    @foreach ($images as $image)
+                                        <div class="added" style="background-image: url({{ $image['image'] }})" rel="{{ $image['id'] }}">
+                                            <span>remove</span>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-info">
+                        <div class="card-header">
+                            <h3 class="card-title">Add image</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="images">
+                                    <div class="pic">
+                                        add
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
