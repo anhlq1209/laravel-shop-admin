@@ -16,11 +16,10 @@ class AuthController extends Controller
     }
 
     public function attempt(LoginFormRequest $request) {
-        $data = $request->only(['email', 'password']);
-        if (Auth::attempt([
-            'email' => $data['email'],
-            'password' => $data['password']
-        ])) {
+        $credentials = $request->only(['email', 'password']);
+
+        // dd($credentials);
+        if (Auth::attempt($credentials)) {
             
             return redirect()->route('dashboard');
             
