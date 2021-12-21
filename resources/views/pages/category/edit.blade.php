@@ -1,34 +1,65 @@
 @extends('main')
 
 @section('head')
-    <script src="../../template/js/my-script.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+@endsection
+
+@section('footer')
+    {{-- <script src="/public/template/js/my-script.js"></script> --}}
 @endsection
 
 @section('content')
     <!-- Main content -->
     <section class="content">
-        <form action="/category/update/{{ $category['id'] }}" method="POST">
+        <form action="/public/category/update/{{ $category['id'] }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-12">
+
                     <div class="card card-warning">
-                    <div class="card-header">
-                        <h3 class="card-title">Edit category</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="inputName">Category name</label>
-                            <input type="text" id="name" name="name" class="form-control" value="{{ $category['name'] }}">
+                        <div class="card-header">
+                            <h3 class="card-title">Edit category</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="idEdit">Id</label>
+                                <input type="text" id="idEdit" name="id" class="form-control" value="{{ $category['id'] }}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputName">Category name</label>
+                                <input type="text" id="name" name="name" class="form-control" value="{{ $category['name'] }}">
+                            </div>
                         </div>
                     </div>
-                    <!-- /.card-body -->
+
+                    <div class="card card-primary">
+
+                        <div class="card-header">
+                            <h3 class="card-title">Avatar of Category</h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="form-group avatar-show">
+                                    <div id="avatar-show" style="background-image: url('{{ $category['avatar'] }}')"></div>
+                                </div>
+                                <div class="form-group avatar-upload">
+                                    <div class="avatar-upload-select">
+                                        <div class="avatar-select-button">Choose File</div>
+                                        <div class="avatar-select-name">No file chosen...</div> 
+                                        <input type="file" name="avatarEdit" id="avatar" class="input-avatar" accept="image/*">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <!-- /.card -->
+
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="/categories" class="btn btn-secondary">Cancel</a>
+                    <a href="/public/categories" class="btn btn-secondary">Cancel</a>
                     <input type="submit" value="Save" class="btn btn-success float-right">
                 </div>
             </div>

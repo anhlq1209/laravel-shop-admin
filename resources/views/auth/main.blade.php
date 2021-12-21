@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		
 		@include('auth.layouts.head')
@@ -14,4 +15,5 @@
 		@include('auth.layouts.footer')
         
 	</body>
+	
 </html>

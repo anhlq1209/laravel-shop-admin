@@ -6,7 +6,6 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,14 +24,13 @@ Route::get('/login', [AuthController::class, 'index'])->name('show-form-login');
 Route::post('/login/attempt', [AuthController::class, 'attempt'])->name('login');
 
 Route::get('/test1', [ProductController::class, 'test'])->name('test');
-Route::post('/test1', [ProductController::class, 'test']);
+Route::post('/test1', [ProductController::class, 'testStore']);
 
-Route::group(['prefix' => '/','middleware' => 'adminauth'], function () {
+Route::group(['prefix' => '/','middleware' => 'auth'], function () {
     // Admin Dashboard
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
     
-    Route::get('/users', [UserController::class, 'index'])->name('admin.user');
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.category');
     Route::prefix('category')->group(function () {
@@ -50,18 +48,23 @@ Route::group(['prefix' => '/','middleware' => 'adminauth'], function () {
         Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('admin.product.edit');
         Route::post('/update/{id}', [ProductController::class, 'update'])->name('admin.product.update');
         Route::post('/destroy/{id}', [ProductController::class, 'destroy'])->name('admin.product.destroy');
-        
         Route::post('/deleteImage/{id}', [ProductController::class, 'deleteImage'])->name('admin.product.deleteImage');
     });
 
     Route::get('/bills', [BillController::class, 'index'])->name('admin.bill');
     Route::get('/messages', [MessageController::class, 'index'])->name('admin.message');
-    Route::prefix('message')->group(function () {
-        Route::get('/reply/{id}', [MessageController::class, 'reply'])->name('admin.message.reply');
-        Route::post('/send/{id}', [MessageController::class, 'send'])->name('admin.message.send');
-    });
     
 
     
     Route::post('/register/store', [AuthController::class, 'store'])->name('register');
 });
+
+// Route::middleware([EnsureTokenIsValid::class])->group(function () {
+//     Route::get('/', function () {
+//         //
+//     });
+
+//     Route::get('/profile', function () {
+//         //
+//     })->withoutMiddleware([EnsureTokenIsValid::class]);
+// });

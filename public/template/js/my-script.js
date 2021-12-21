@@ -1,4 +1,4 @@
-$(function () {
+$(async function () {
     $('.btn-del-cate').click(function (e) {
         let idDel = $(this).val();
 
@@ -6,7 +6,7 @@ $(function () {
 
         if (sure) {
             $.post(
-                '/category/destroy/'+idDel,
+                '/public/category/destroy/'+idDel,
                 {'_token': $('meta[name="csrf-token"]').attr('content')},
                 function(data) {
                     location.reload();
@@ -22,7 +22,7 @@ $(function () {
 
         if (sure) {
             $.post(
-                '/product/destroy/'+idDel,
+                '/public/product/destroy/' + idDel,
                 {'_token': $('meta[name="csrf-token"]').attr('content')},
                 function(data) {
                     location.reload();
@@ -68,13 +68,16 @@ $(function () {
     function uploadImages() {
         
         $('.images .pic').on('click', function () {
-
-            $('.images').prepend('<div class="img"><span>remove</span><input type="file" name="images[]" class="input-image" accept="image/*"></div>');
             
-            $('.input-image').first().click();
+            let uploader = $('<input type="file" name="images[]" class="input-image" accept="image/*">');
+
+            uploader.click();
+            
+            uploader.on('change', function() {
+                $('.images').prepend('<div class="img"><span>remove</span></div>');
     
-            $('.input-image').on('change', function() {
-    
+                $('.img').first().append(uploader);
+                
                 let reader = new FileReader()
                 reader.onload = function(event) {
     
@@ -83,14 +86,14 @@ $(function () {
                 }
     
                 reader.readAsDataURL($(this)[0].files[0]);
-    
+                
+                $('.img').on('click', function () {
+                    $(this).remove();
+                })
+
             })
             
-            $('.img').on('click', function () {
-                $(this).remove()
-            })
-            
-        })
+        }) 
 
     }
 
@@ -106,7 +109,7 @@ $(function () {
                 
                     $(this).remove();
 
-                    $.post('/product/deleteImage/' + id,
+                    $.post('/public/product/deleteImage/' + id,
                         {
                             '_token':$('meta[name="csrf-token"]').attr('content')
                         },
@@ -118,7 +121,8 @@ $(function () {
             }
     
         })
-
     }
+
+    
     
 });

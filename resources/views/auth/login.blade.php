@@ -3,7 +3,7 @@
 @section('content')
     <div class="login-box">
         <div class="login-logo">
-            <a href="/"><b>Noir Lee</b> Shop</a>
+            <a href="/public/"><b>Noir Lee</b> Shop</a>
         </div>
         <div class="card">
             <div class="card-body login-card-body">
@@ -11,7 +11,7 @@
 
                 @include('layouts.alert')
 
-                <form action="/login/attempt" method="post">
+                <form action="/public/login/attempt" method="post">
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -31,7 +31,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
+                                <input type="checkbox" name="remember" id="remember">
                                 <label for="remember">Remember Me</label>
                             </div>
                         </div>

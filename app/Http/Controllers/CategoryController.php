@@ -51,11 +51,11 @@ class CategoryController extends Controller
     }
 
     public function update($id, Request $request) {
-        if ($this->categoryService->edit($id, $request)) {
+        if ($this->categoryService->update($id, $request)) {
             return redirect()->back();
         }
 
-        Session::flash('error', 'Cập nhật danh mục không thành công!!!');
+        // Session::flash('error', 'Cập nhật thất bại');
         return redirect()->back()->withInput();
     }
 
