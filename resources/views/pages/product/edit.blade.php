@@ -2,21 +2,20 @@
 
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" href="/template/css/my-style.css">
 @endsection
 
 @section('footer')
-    <script src="/ckeditor/ckeditor.js"></script>
+    <script src="/public/ckeditor/ckeditor.js"></script>
     <script>
         CKEDITOR.replace( 'description' );
     </script>
-    <script src="/template/js/my-script.js"></script>
+    {{-- <script src="/public/template/js/my-script.js"></script> --}}
 @endsection
 
 @section('content')
     <!-- Main content -->
     <section class="content">
-        <form action="/product/update/{{ $product['id'] }}" method="post" enctype="multipart/form-data">
+        <form action="/public/product/update/{{ $product['id'] }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6">
@@ -111,7 +110,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="/products" class="btn btn-secondary">Cancel</a>
+                    <a href="/public/products" class="btn btn-secondary">Cancel</a>
                     <input type="submit" id="save" value="Save" class="btn btn-success float-right">
                 </div>
             </div>

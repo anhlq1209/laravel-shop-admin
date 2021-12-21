@@ -6,7 +6,7 @@ $(async function () {
 
         if (sure) {
             $.post(
-                '/category/destroy/'+idDel,
+                '/public/category/destroy/'+idDel,
                 {'_token': $('meta[name="csrf-token"]').attr('content')},
                 function(data) {
                     location.reload();
@@ -22,7 +22,7 @@ $(async function () {
 
         if (sure) {
             $.post(
-                '/product/destroy/'+idDel,
+                '/public/product/destroy/'+idDel,
                 {'_token': $('meta[name="csrf-token"]').attr('content')},
                 function(data) {
                     location.reload();
@@ -68,13 +68,16 @@ $(async function () {
     function uploadImages() {
         
         $('.images .pic').on('click', function () {
-
-            $('.images').prepend('<div class="img"><span>remove</span><input type="file" name="images[]" class="input-image" accept="image/*"></div>');
             
-            $('.input-image').first().click();
+            let uploader = $('<input type="file" name="images[]" class="input-image" accept="image/*">');
+
+            uploader.click();
+            
+            uploader.on('change', function() {
+                $('.images').prepend('<div class="img"><span>remove</span></div>');
     
-            $('.input-image').on('change', function() {
-    
+                $('.img').first().append(uploader);
+                
                 let reader = new FileReader()
                 reader.onload = function(event) {
     
@@ -83,15 +86,43 @@ $(async function () {
                 }
     
                 reader.readAsDataURL($(this)[0].files[0]);
-    
+                
+                $('.img').on('click', function () {
+                    $(this).remove();
+                })
+
             })
             
-        })
-        
-        $('.img').on('click', function () {
-            $(this).remove()
-        })
+        }) 
 
     }
+
+    removeImage();
+
+    function removeImage() {
+
+        $('.imageAdded .added').on('click', function () {
+    
+            let id = $(this).attr('rel');
+    
+            if (confirm('Bạn có chắc muốn xóa ảnh ' + id + ' không?')) {
+                
+                    $(this).remove();
+
+                    $.post('/public/product/deleteImage/' + id,
+                        {
+                            '_token':$('meta[name="csrf-token"]').attr('content')
+                        },
+                        function (data) {
+
+                        }
+                    )
+    
+            }
+    
+        })
+    }
+
+    
     
 });

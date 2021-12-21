@@ -51,12 +51,11 @@ class CategoryController extends Controller
     }
 
     public function update($id, Request $request) {
-        if (Category::where('id', $id)->update(['name' => $request->input('name')])) {
-            Session::flash('success', 'Cập nhật thông tin danh mục thành công');
+        if ($this->categoryService->update($id, $request)) {
             return redirect()->back();
         }
-        
-        Session::flash('error', 'Cập nhật thất bại');
+
+        // Session::flash('error', 'Cập nhật thất bại');
         return redirect()->back()->withInput();
     }
 

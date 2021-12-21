@@ -5,7 +5,7 @@
 @endsection
 
 @section('footer')
-    <script src="/template/js/my-script.js"></script>
+    <script src="/public/template/js/my-script.js"></script>
 @endsection
 
 @section('content')
@@ -18,7 +18,7 @@
                 <h3 class="card-title">Categories</h3>
 
                 <div class="card-tools">
-                    <a class="btn btn-success btn-sm" href="/category/create">
+                    <a class="btn btn-success btn-sm" href="/public/category/create">
                         <i class="fas fa-plus"></i>
                         New category
                     </a>
@@ -34,7 +34,9 @@
                             <th style="width: 20%">
                                 Category name
                             </th>
-                            
+                            <th style="width: 20%">
+                                Avatar
+                            </th>
                             <th style="width: 20%">
                             </th>
                         </tr>
@@ -48,8 +50,11 @@
                                 <td>
                                     <a>{{ $category['name'] }}</a>
                                 </td>
+                                <td>
+                                    <div class="avatar" style="background-image: url({{ $category['avatar'] }})"></div>
+                                </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="/category/edit/{{ $category['id'] }}">
+                                    <a class="btn btn-info btn-sm" href="/public/category/edit/{{ $category['id'] }}">
                                         <i class="fas fa-pencil-alt"></i>
                                         Edit
                                     </a>

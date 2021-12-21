@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-	<a href="/" class="brand-link">
+	<a href="/public/" class="brand-link">
 		<img src="/template/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 		<span class="brand-text font-weight-light">AdminLTE 3</span>
 	</a>
@@ -11,7 +11,7 @@
 		<!-- Sidebar user panel (optional) -->
 		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 			<div class="image">
-				<img src="/template/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+				<img src="/public/template/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
 			</div>
 			<div class="info">
 				<a href="#" class="d-block">Alexander Pierce</a>
@@ -35,7 +35,7 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<li class="nav-header">EXAMPLES</li>
 				<li class="nav-item">
-					<a href="/" class="nav-link {{ $title === 'Dashboard' ? 'active' : '' }}">
+					<a href="/public/" class="nav-link {{ $title === 'Dashboard' ? 'active' : '' }}">
 						<i class="nav-icon fas fa-chart-line"></i>
 						<p>
 							Dashboard
@@ -43,7 +43,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/categories" class="nav-link {{ $title === 'Categories' ? 'active' : '' }}">
+					<a href="/public/categories" class="nav-link {{ $title === 'Categories' ? 'active' : '' }}">
 						<i class="nav-icon fas fa-boxes"></i>
 						<p>
 							Categories
@@ -51,7 +51,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/products" class="nav-link {{ $title === 'Products' ? 'active' : '' }}">
+					<a href="/public/products" class="nav-link {{ $title === 'Products' ? 'active' : '' }}">
 						<i class="nav-icon fab fa-battle-net"></i>
 						<p>
 							Products
@@ -59,7 +59,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/bills" class="nav-link {{ $title === 'Bills' ? 'active' : '' }}">
+					<a href="/public/bills" class="nav-link {{ $title === 'Bills' ? 'active' : '' }}">
 						<i class="nav-icon fas fa-file-invoice"></i>
 						<p>
 							Bills
@@ -67,7 +67,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/messages" class="nav-link {{ $title === 'Messages' ? 'active' : '' }}">
+					<a href="/public/messages" class="nav-link {{ $title === 'Messages' ? 'active' : '' }}">
 						<i class="nav-icon fas fa-mail-bulk"></i>
 						<p>
 							Messages
@@ -75,7 +75,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="/logout" class="nav-link">
+					<a href="/public/logout" class="nav-link">
 						<i class="nav-icon fas fa-sign-out-alt"></i>
 						<p>Logout</p>
 					</a>
