@@ -16,10 +16,14 @@ class AuthController extends Controller
     }
 
     public function attempt(LoginFormRequest $request) {
-        $credentials = $request->only(['email', 'password']);
-
-        // dd($credentials);
-        if (Auth::attempt($credentials)) {
+        $email = $request->input('email');
+        $password = $request->input('password');
+        
+        if (Auth::attempt([
+            'email' => $email,
+            'password' => $password,
+            'roll' => 'admin'
+        ], $request->remember)) {
             
             return redirect()->route('dashboard');
             
