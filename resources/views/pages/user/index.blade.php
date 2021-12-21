@@ -5,7 +5,7 @@
 @endsection
 
 @section('footer')
-    <script src="/template/js/my-script.js"></script>
+    <script src="/public/template/js/my-script.js"></script>
 @endsection
 
 @section('content')
@@ -49,7 +49,7 @@
                                             <a>{{ $user['email'] }}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <a class="btn btn-danger btn-sm" href="/user/upgrade/{{ $user['id'] }}">
+                                            <a class="btn btn-danger btn-sm" href="/public/user/upgrade/{{ $user['id'] }}">
                                                 <i class="fas fa-fire"></i>
                                                 Upgrade to admin
                                             </a>
@@ -100,7 +100,7 @@
                                             <a>{{ $user['email'] }}</a>
                                         </td>
                                         <td class="project-actions text-right">
-                                            <a class="btn btn-info btn-sm" href="/user/upgrade/{{ $user['id'] }}">
+                                            <a class="btn btn-info btn-sm" href="/public/user/upgrade/{{ $user['id'] }}">
                                                 <i class="fas fa-tint"></i>
                                                 Demote to user
                                             </a>

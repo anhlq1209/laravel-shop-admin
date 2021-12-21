@@ -2,11 +2,10 @@
 
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" href="/template/css/my-style.css">
+    <link rel="stylesheet" href="/public/template/css/my-style.css">
 @endsection
 
 @section('footer')
-    <script src="/template/js/my-script.js"></script>
 @endsection
 
 @section('content')
@@ -19,7 +18,7 @@
                 <h3 class="card-title">Projects</h3>
 
                 <div class="card-tools">
-                    <a class="btn btn-success btn-sm" href="/product/create">
+                    <a class="btn btn-success btn-sm" href="/public/product/create">
                         <i class="fas fa-plus"></i>
                         New product
                     </a>
@@ -62,7 +61,6 @@
                                 </td>
                                 <td>
                                     <div class="avatar" style="background-image: url({{ $product['avatar'] }})"></div>
-                                    {{-- <img src="{{ $product['avatar'] }}" /> --}}
                                 </td>
                                 <td class="project-state">
                                     {{ $product['category_id'] }}
@@ -74,7 +72,7 @@
                                     {{ $product['count_likes'] }}
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="/product/edit/{{ $product['id'] }}">
+                                    <a class="btn btn-info btn-sm" href="/public/product/edit/{{ $product['id'] }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
