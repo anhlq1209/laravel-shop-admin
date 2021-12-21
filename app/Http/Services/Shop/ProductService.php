@@ -26,7 +26,7 @@ class ProductService {
             $fileName = $avatar->getClientOriginalName();
             $fileName = $productLatest->id.substr($fileName, strpos($fileName, '.', strlen($fileName) - 5), strlen($fileName));
             
-            $avatar->storeAs('public\assets\avaProduct', $fileName, 'local');
+            $avatar->storeAs('assets\avaProduct', $fileName, 'local');
             
             $storedPath = $avatar->move('assets/avaProduct', $fileName, $avatar->getClientOriginalName());
 
@@ -40,16 +40,21 @@ class ProductService {
             if ($request->file('images') !== null) {
                 $images = $request->file('images');
                 foreach ($images as $image) {
-                    ProductImage::create([
+
+                    // var_dump($image);
+
+                    $imgLatest = ProductImage::create([
                         'product_id' => $productLatest->id
                     ]);
 
-                    $imgLatest = ProductImage::latest()->first();
+                    var_dump($imgLatest);
+
+                    // $imgLatest = ProductImage::latest()->first();
 
                     $fileNameImg = $image->getClientOriginalName();
                     $fileNameImg = $imgLatest->id.substr($fileNameImg, strpos($fileNameImg, '.', strlen($fileNameImg) - 5), strlen($fileNameImg));
                     
-                    $image->storeAs('public\assets\imgProduct', $fileNameImg, 'local');
+                    $image->storeAs('assets\imgProduct', $fileNameImg, 'local');
                     
                     $storedPath = $image->move('assets/imgProduct', $fileNameImg, $image->getClientOriginalName());
 
@@ -59,6 +64,7 @@ class ProductService {
                     $imgLatest->image = $path;
                     $imgLatest->save();
                 }
+                // exit();
             }
             
             Session::flash('success', 'Tạo sản phẩm mới thành công');
@@ -88,6 +94,8 @@ class ProductService {
 
             if ($request->file('avatarEdit') != null) {
 
+                // dd($request->file('avatarEdit'));
+
                 if ($product->avatar != '/public/assets/avaProduct/product.jpg') {
 
                     $s = $product->avatar;
@@ -102,7 +110,7 @@ class ProductService {
                 $fileName = $avatar->getClientOriginalName();
                 $fileName = $product->id.substr($fileName, strpos($fileName, '.', strlen($fileName) - 5), strlen($fileName));
                 
-                $avatar->storeAs('public\assets\avaProduct', $fileName, 'local');
+                $avatar->storeAs('assets\avaProduct', $fileName, 'local');
                 
                 $storedPath = $avatar->move('assets/avaProduct', $fileName, $avatar->getClientOriginalName());
     
@@ -130,9 +138,12 @@ class ProductService {
                     $fileNameImg = $image->getClientOriginalName();
                     $fileNameImg = $imgLatest->id.substr($fileNameImg, strpos($fileNameImg, '.', strlen($fileNameImg) - 5), strlen($fileNameImg));
                     
-                    $image->storeAs('public\assets\imgProduct', $fileNameImg, 'local');
+                    $image->storeAs('assets\imgProduct', $fileNameImg, 'local');
                     
-                    $path = Storage::url('public/assets/avaProduct/product.jpg');
+                    $storedPath = $image->move('assets/imgProduct', $fileNameImg, $image->getClientOriginalName());
+    
+                    $path = $storedPath->getPathName();
+                    $path = '/public/'.str_ireplace('\\','/',$path);
 
                     $imgLatest->image = $path;
                     $imgLatest->save();
@@ -183,6 +194,8 @@ class ProductService {
                 }
 
             }
+
+            $product->delete();
 
         } catch (\Exception $e) {
 

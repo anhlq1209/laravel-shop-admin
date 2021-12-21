@@ -28,7 +28,7 @@ class CategoryController extends Controller
 
     public function create() {
         return view('pages.category.create', [
-            'title' => 'New Category'
+            'title' => 'New category'
         ]);
     }
 

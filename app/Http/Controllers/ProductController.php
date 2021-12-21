@@ -33,7 +33,7 @@ class ProductController extends Controller
     public function create() {
         $categories = Category::all();
         return view('pages.product.create', [
-            'title' => 'New Category',
+            'title' => 'New product',
             'categories' => $categories
         ]);
     }
@@ -43,7 +43,7 @@ class ProductController extends Controller
             return redirect()->back();
         }
             
-        // Session::flash('error', 'Vui lòng nhập đủ thông tin Product');
+        Session::flash('error', 'Vui lòng nhập đủ thông tin Product');
         return redirect()->back()->withInput();
         
     }
@@ -62,7 +62,9 @@ class ProductController extends Controller
     }
 
     public function update($id, Request $request) {
+
         if ($this->productService->update($id, $request)) {
+            Session::flash('success', 'Cập nhật thông tin Product thành công');
             return redirect()->back();
         }
             
@@ -94,6 +96,11 @@ class ProductController extends Controller
 
     }
 
+    public function deleteImage($id) {
+        ProductImage::find($id)->delete();
+    }
+
+    //  TEST
     public function test() {
         
         return view('test');

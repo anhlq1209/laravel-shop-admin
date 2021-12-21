@@ -22,7 +22,7 @@ $(async function () {
 
         if (sure) {
             $.post(
-                '/public/product/destroy/'+idDel,
+                '/public/product/destroy/' + idDel,
                 {'_token': $('meta[name="csrf-token"]').attr('content')},
                 function(data) {
                     location.reload();
